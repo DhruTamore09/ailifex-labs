@@ -1,0 +1,18 @@
+{
+  "python.defaultInterpreterPath": "d:/LedgerPro/backend/venv/Scripts/python.exe",
+  "python.terminal.activateEnvironment": true,
+  "python.terminal.activateEnvInCurrentTerminal": true,
+  "terminal.integrated.defaultProfile.windows": "PowerShell (Venv)",
+  "terminal.integrated.profiles.windows": {
+    "PowerShell (Venv)": {
+      "source": "PowerShell",
+      "args": [
+        "-ExecutionPolicy",
+        "Bypass",
+        "-NoExit",
+        "-Command",
+        "if (Test-Path 'd:\\LedgerPro\\backend\\venv\\Scripts\\Activate.ps1') { . 'd:\\LedgerPro\\backend\\venv\\Scripts\\Activate.ps1' } elseif (Test-Path .\\backend\\venv\\Scripts\\Activate.ps1) { . .\\backend\\venv\\Scripts\\Activate.ps1 } elseif (Test-Path .\\venv\\Scripts\\Activate.ps1) { . .\\venv\\Scripts\\Activate.ps1 }"
+      ]
+    }
+  }
+}

@@ -1,0 +1,248 @@
+@import "tailwindcss";
+
+/* ───────────────────────────────────────────────
+   AILifeX Labs – Design System
+   Tailwind v4 custom theme
+─────────────────────────────────────────────── */
+
+@theme inline {
+  /* Brand Colors */
+  --color-purple-950: #1a0a3d;
+  --color-purple-900: #2d1575;
+  --color-purple-800: #3d1f9e;
+  --color-purple-700: #4e27c3;
+  --color-purple-600: #5e32d4;
+  --color-purple-500: #6c3fc5;
+  --color-purple-400: #8b5cf6;
+  --color-purple-300: #a78bfa;
+  --color-purple-200: #c4b5fd;
+  --color-purple-100: #ede9fe;
+  --color-purple-50:  #f5f0ff;
+
+  /* Text */
+  --color-text-dark:   #0f0a1e;
+  --color-text-body:   #4b4565;
+  --color-text-muted:  #8b879e;
+
+  /* Neutral */
+  --color-off-white:  #fafafa;
+  --color-border:     #e8e4f4;
+  --color-border-light: #f0edf8;
+
+  /* Background */
+  --color-background: #ffffff;
+  --color-foreground: #0f0a1e;
+
+  /* Typography */
+  --font-sans:     var(--font-inter);
+  --font-heading:  var(--font-jakarta);
+
+  /* Shadows */
+  --shadow-card:    0 1px 3px 0 rgba(108, 63, 197, 0.08), 0 4px 16px 0 rgba(108, 63, 197, 0.06);
+  --shadow-hover:   0 8px 32px 0 rgba(108, 63, 197, 0.16);
+  --shadow-lg:      0 16px 48px 0 rgba(108, 63, 197, 0.12);
+
+  /* Animations */
+  --animate-fade-up: fade-up 0.6s ease both;
+  --animate-fade-in: fade-in 0.4s ease both;
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ─── Base ─────────────────────────────────── */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-text-body);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading), var(--font-sans), system-ui, sans-serif;
+  color: var(--color-text-dark);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+/* ─── Scrollbar ────────────────────────────── */
+
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--color-purple-200); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-purple-400); }
+
+/* ─── Utility Classes ──────────────────────── */
+
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-purple-500);
+  background: var(--color-purple-50);
+  border: 1px solid var(--color-purple-200);
+  border-radius: 100px;
+  padding: 4px 14px;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #4e27c3 0%, #8b5cf6 60%, #6c3fc5 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-bg-subtle {
+  background: linear-gradient(160deg, #f5f0ff 0%, #ffffff 50%, #faf8ff 100%);
+}
+
+.gradient-bg-purple {
+  background: linear-gradient(135deg, #2d1575 0%, #4e27c3 50%, #6c3fc5 100%);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+}
+
+.glass-card-purple {
+  background: rgba(108, 63, 197, 0.08);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(108, 63, 197, 0.2);
+  border-radius: 16px;
+}
+
+.card-hover {
+  transition: box-shadow 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
+}
+
+.card-hover:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-2px);
+  border-color: var(--color-purple-300);
+}
+
+/* ─── Button Styles ────────────────────────── */
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 28px;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #fff;
+  background: var(--color-purple-500);
+  border: 1.5px solid var(--color-purple-500);
+  border-radius: 10px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s, box-shadow 0.2s, transform 0.15s;
+  letter-spacing: -0.01em;
+}
+
+.btn-primary:hover {
+  background: var(--color-purple-600);
+  box-shadow: 0 6px 24px rgba(108, 63, 197, 0.35);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 28px;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-purple-600);
+  background: transparent;
+  border: 1.5px solid var(--color-border);
+  border-radius: 10px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s, border-color 0.2s, transform 0.15s;
+  letter-spacing: -0.01em;
+}
+
+.btn-secondary:hover {
+  background: var(--color-purple-50);
+  border-color: var(--color-purple-300);
+  transform: translateY(-1px);
+}
+
+.btn-white {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 28px;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-purple-600);
+  background: #ffffff;
+  border: 1.5px solid rgba(255,255,255,0.3);
+  border-radius: 10px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s, box-shadow 0.2s, transform 0.15s;
+}
+
+.btn-white:hover {
+  background: rgba(255,255,255,0.92);
+  box-shadow: 0 6px 24px rgba(0,0,0,0.12);
+  transform: translateY(-1px);
+}
+
+/* ─── Section Spacing ──────────────────────── */
+
+.section {
+  padding: 96px 0;
+}
+
+.section-sm {
+  padding: 64px 0;
+}
+
+.container-xl {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+/* ─── Divider ──────────────────────────────── */
+
+.purple-divider {
+  width: 48px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-purple-500), var(--color-purple-300));
+  border-radius: 2px;
+  margin: 12px 0 20px;
+}
