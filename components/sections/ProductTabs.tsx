@@ -309,7 +309,7 @@ export default function ProductTabs() {
                       <div className="w-3 h-3 rounded-full bg-green-400" />
                     </div>
                     <span className="font-mono text-[11px] text-slate-300 ml-2">
-                      AILifeX VeriBatch™ MBR/BMR Comparison Engine · Lot BT-2024-1185
+                      LifeScienceX AI VeriBatch™ MBR/BMR Comparison Engine · Lot BT-2024-1185
                     </span>
                   </div>
                   <span className="bg-purple-500/20 text-purple-300 px-2.5 py-0.5 rounded-full text-[10px] font-bold border border-purple-400/30">

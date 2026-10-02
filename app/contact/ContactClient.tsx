@@ -179,7 +179,7 @@ export default function ContactClient() {
                     Message Received & Logged to Inbox
                   </h3>
                   <p className="text-sm max-w-md mx-auto" style={{color: "#6b6880"}}>
-                    Thank you! Your inquiry has been saved to the live AILifeX Labs inbox for <strong>info.ailifexlabs@gmail.com</strong>.
+                    Thank you! Your inquiry has been saved to the live LifeScienceX AI inbox for <strong>info.ailifexlabs@gmail.com</strong>.
                   </p>
 
                   <div className="flex flex-col sm:flex-row gap-3 pt-2">

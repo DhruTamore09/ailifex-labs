@@ -83,7 +83,7 @@ export default function LifeSciencesFocus() {
               Purpose-Built for Pharmaceutical Quality Teams
             </h2>
             <p className="text-base leading-relaxed mb-8" style={{color: "#4b4565"}}>
-              AILifeX Labs is developed specifically for the Life Sciences industry. Our VeriBatch™ Batch Review
+              LifeScienceX AI is developed specifically for the Life Sciences industry. Our VeriBatch™ Batch Review
               System reflects a deep understanding of pharmaceutical manufacturing documentation,
               quality processes, and review workflows — not a generic document management tool.
             </p>

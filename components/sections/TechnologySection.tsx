@@ -46,7 +46,7 @@ export default function TechnologySection() {
               Enterprise-Grade Architecture for Life Sciences
             </h2>
             <p className="text-base leading-relaxed" style={{color: "#4b4565"}}>
-              AILifeX Labs is built on a foundation designed to meet the reliability, traceability,
+              LifeScienceX AI is built on a foundation designed to meet the reliability, traceability,
               and configurability demands of pharmaceutical operations — from single-site manufacturers
               to multi-site enterprise deployments.
             </p>

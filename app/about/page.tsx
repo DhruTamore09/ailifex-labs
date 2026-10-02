@@ -5,7 +5,7 @@ import RequestDemo from "@/components/sections/RequestDemo";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "AILifeX Labs is a Life Sciences technology company building enterprise software for pharmaceutical batch record review and quality operations.",
+    "LifeScienceX AI is a Life Sciences technology company building enterprise software for pharmaceutical batch record review and quality operations.",
 };
 
 const values = [
@@ -45,7 +45,7 @@ export default function AboutPage() {
       >
         <div className="container-xl">
           <div className="max-w-3xl">
-            <span className="section-label mb-6 inline-flex">About AILifeX Labs</span>
+            <span className="section-label mb-6 inline-flex">About LifeScienceX AI</span>
             <h1
               className="text-4xl md:text-6xl font-bold mb-6"
               style={{fontFamily: "var(--font-jakarta)", color: "#0f0a1e", letterSpacing: "-0.03em"}}
@@ -53,7 +53,7 @@ export default function AboutPage() {
               Software Built for Life Sciences Quality
             </h1>
             <p className="text-lg leading-relaxed mb-4" style={{color: "#4b4565"}}>
-              AILifeX Labs is a pharmaceutical technology company focused on one mission: making
+              LifeScienceX AI is a pharmaceutical technology company focused on one mission: making
               batch record review more structured, efficient, and traceable for Life Sciences
               manufacturers.
             </p>
@@ -82,7 +82,7 @@ export default function AboutPage() {
               <p className="text-base leading-relaxed mb-5" style={{color: "#4b4565"}}>
                 Pharmaceutical batch records contain some of the most critical information in
                 manufacturing — yet reviewing them remains a largely manual, document-intensive
-                process. AILifeX Labs exists to change that.
+                process. LifeScienceX AI exists to change that.
               </p>
               <p className="text-base leading-relaxed" style={{color: "#4b4565"}}>
                 We build software that transforms how quality teams interact with batch

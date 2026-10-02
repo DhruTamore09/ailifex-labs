@@ -116,7 +116,7 @@ export default function HowItWorks() {
           <div className="rounded-2xl overflow-hidden border" style={{borderColor: "#e8e4f4"}}>
             <Image
               src="/images/how_it_works.png"
-              alt="AILifeX Labs batch review process flow: data ingestion, automated analysis, and reviewer workflow"
+              alt="LifeScienceX AI batch review process flow: data ingestion, automated analysis, and reviewer workflow"
               width={900}
               height={400}
               className="w-full object-cover"

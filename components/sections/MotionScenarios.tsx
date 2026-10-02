@@ -169,7 +169,7 @@ export default function MotionScenarios() {
             className="text-3xl md:text-5xl font-bold mb-4"
             style={{ fontFamily: "var(--font-jakarta)", color: "#0f0a1e", letterSpacing: "-0.02em" }}
           >
-            How AILifeX Labs <span className="gradient-text">Simplifies Batch Release</span>
+            How LifeScienceX AI <span className="gradient-text">Simplifies Batch Release</span>
           </h2>
           <p className="text-base text-gray-600 leading-relaxed">
             A clear, 6-step automated process that takes pharmaceutical batch review from days down to under 15 minutes.

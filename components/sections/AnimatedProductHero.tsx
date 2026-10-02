@@ -119,10 +119,10 @@ export default function AnimatedProductHero() {
             {/* Logo */}
             <div className="flex items-center gap-2 mb-6">
               <div className="w-6 h-6 rounded-lg bg-purple-600 flex items-center justify-center text-white font-bold text-xs">
-                A
+                L
               </div>
               <span className="font-bold text-purple-950 text-sm" style={{ fontFamily: "var(--font-jakarta)" }}>
-                AILifeX Labs
+                LifeScienceX AI
               </span>
             </div>
 

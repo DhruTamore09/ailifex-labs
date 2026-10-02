@@ -36,7 +36,7 @@ export default function Footer() {
               />
               <div>
                 <span className="text-[16px] font-bold text-white font-jakarta block leading-tight">
-                  AILifeX Labs
+                  LifeScienceX AI
                 </span>
                 <div className="text-[10px] font-semibold tracking-widest uppercase text-purple-400 leading-tight">
                   Life Sciences Technology
@@ -95,7 +95,7 @@ export default function Footer() {
           style={{borderTop: "1px solid rgba(255,255,255,0.06)"}}
         >
           <p className="text-xs" style={{color: "#4a4760"}}>
-            © {new Date().getFullYear()} AILifeX Labs. All rights reserved.
+            © {new Date().getFullYear()} LifeScienceX AI. All rights reserved.
           </p>
           <p className="text-xs" style={{color: "#4a4760"}}>
             Life Sciences Technology · Pharmaceutical Software

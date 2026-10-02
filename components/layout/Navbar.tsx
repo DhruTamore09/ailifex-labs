@@ -30,7 +30,7 @@ export default function Navbar() {
           <Link href="/" className="flex items-center gap-3 group">
             <Image
               src="/images/logo.png"
-              alt="AILifeX Labs Logo"
+              alt="LifeScienceX AI Logo"
               width={38}
               height={38}
               priority
@@ -38,7 +38,7 @@ export default function Navbar() {
             />
             <div>
               <span className="text-[16px] font-bold tracking-tight text-slate-900 font-jakarta block leading-tight">
-                AILifeX Labs
+                LifeScienceX AI
               </span>
               <div className="text-[10px] font-semibold tracking-widest uppercase text-purple-600 leading-tight">
                 Life Sciences Technology

@@ -45,7 +45,7 @@ export default function ComparisonSection() {
             <span className="gradient-text">VeriBatch™ AI</span>
           </h2>
           <p className="text-base text-slate-600 leading-relaxed">
-            See how AILifeX VeriBatch™ modernizes pharmaceutical manufacturing quality by transforming slow, paper-based BMR reviews into instant digital operational intelligence.
+            See how LifeScienceX AI VeriBatch™ modernizes pharmaceutical manufacturing quality by transforming slow, paper-based BMR reviews into instant digital operational intelligence.
           </p>
         </div>
 
@@ -58,7 +58,7 @@ export default function ComparisonSection() {
               Traditional Paper BMR Review
             </div>
             <div className="md:col-span-4 p-4 text-emerald-400">
-              AILifeX VeriBatch™ AI Platform
+              LifeScienceX AI VeriBatch™ AI Platform
             </div>
           </div>
 

@@ -78,13 +78,13 @@ export async function POST(req: Request) {
         });
 
         await transporter.sendMail({
-          from: `"AILifeX Labs Website" <${smtpUser}>`,
+          from: `"LifeScienceX AI Website" <${smtpUser}>`,
           to: targetEmail,
           replyTo: email,
           subject: `New Lead Inquiry from ${firstName} ${lastName} (${company})`,
           html: `
             <div style="font-family: Arial, sans-serif; max-width: 600px; padding: 20px; border: 1px solid #e8e4f4; border-radius: 12px;">
-              <h2 style="color: #6c3fc5; margin-bottom: 16px;">New AILifeX Labs Contact Inquiry</h2>
+              <h2 style="color: #6c3fc5; margin-bottom: 16px;">New LifeScienceX AI Contact Inquiry</h2>
               <hr style="border: 0; border-top: 1px solid #e8e4f4; margin-bottom: 20px;" />
               <p><strong>Name:</strong> ${firstName} ${lastName}</p>
               <p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>

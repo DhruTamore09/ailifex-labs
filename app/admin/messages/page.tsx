@@ -65,7 +65,7 @@ export default function AdminMessagesPage() {
               Received Messages Inbox
             </h1>
             <p className="text-sm text-slate-500 mt-1">
-              All website inquiries received for <strong>info.ailifexlabs@gmail.com</strong>
+              All website inquiries received for <strong>LifeScienceX AI Inbox</strong>
             </p>
           </div>
 

@@ -18,11 +18,11 @@ const plusJakarta = Plus_Jakarta_Sans({
 
 export const metadata: Metadata = {
   title: {
-    default: "AILifeX Labs | VeriBatch™ Life Sciences Batch Review System",
-    template: "%s | AILifeX Labs",
+    default: "LifeScienceX AI | VeriBatch™ Life Sciences Batch Review System",
+    template: "%s | LifeScienceX AI",
   },
   description:
-    "AILifeX Labs delivers enterprise software for Life Sciences operations. Our flagship product, VeriBatch™, streamlines pharmaceutical batch record review, MBR/BMR comparison, and exception management.",
+    "LifeScienceX AI delivers enterprise software for Life Sciences operations. Our flagship product, VeriBatch™, streamlines pharmaceutical batch record review, MBR/BMR comparison, and exception management.",
   keywords: [
     "VeriBatch",
     "VeriBatch software",
@@ -31,19 +31,19 @@ export const metadata: Metadata = {
     "MBR BMR comparison",
     "batch record review system",
     "pharma technology",
-    "AILifeX Labs",
+    "LifeScienceX AI",
   ],
   openGraph: {
-    title: "AILifeX Labs | VeriBatch™ Batch Review System",
+    title: "LifeScienceX AI | VeriBatch™ Batch Review System",
     description:
       "Enterprise software for smarter Life Sciences operations — VeriBatch™ Batch Review System, MBR/BMR Comparison, Exception Management.",
-    url: "https://ailifexlabs.com",
-    siteName: "AILifeX Labs",
+    url: "https://lifesciencexai.com",
+    siteName: "LifeScienceX AI",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "AILifeX Labs | VeriBatch™ Batch Review System",
+    title: "LifeScienceX AI | VeriBatch™ Batch Review System",
     description:
       "Enterprise software for smarter Life Sciences operations — VeriBatch™ Batch Review System, MBR/BMR Comparison, Exception Management.",
   },
