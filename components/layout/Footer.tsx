@@ -29,7 +29,7 @@ export default function Footer() {
             <Link href="/" className="flex items-center gap-3 mb-4 group">
               <Image
                 src="/images/logo.png"
-                alt="AILifeX Labs Logo"
+                alt="LifeScienceX AI Logo"
                 width={36}
                 height={36}
                 className="w-9 h-9 object-contain rounded-xl shadow-sm transition-transform group-hover:scale-105"
