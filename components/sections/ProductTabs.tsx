@@ -21,9 +21,6 @@ import {
   SlidersHorizontal,
   CheckSquare,
   ArrowRight,
-  Building2,
-  Clock,
-  Zap,
 } from "lucide-react";
 
 // VeriBatch features
@@ -182,27 +179,51 @@ export default function ProductTabs() {
   const [activeTab, setActiveTab] = useState<"veribatch" | "changesure">("veribatch");
 
   useEffect(() => {
-    // Check URL query searchParams or hash
-    const tabParam = searchParams.get("tab") || searchParams.get("product");
-    const hash = window.location.hash.replace("#", "");
+    const syncTabFromUrl = () => {
+      // Check URL query searchParams or hash
+      const tabParam = searchParams.get("tab") || searchParams.get("product");
+      const hash = typeof window !== "undefined" ? window.location.hash.replace("#", "") : "";
 
-    if (tabParam === "changesure" || hash === "changesure") {
-      setActiveTab("changesure");
-    } else if (tabParam === "veribatch" || hash === "veribatch") {
-      setActiveTab("veribatch");
-    }
+      if (tabParam === "changesure" || hash === "changesure") {
+        setActiveTab("changesure");
+      } else if (tabParam === "veribatch" || hash === "veribatch") {
+        setActiveTab("veribatch");
+      } else {
+        setActiveTab("veribatch");
+      }
+    };
+
+    syncTabFromUrl();
+
+    const handleCustomTabChange = (e: Event) => {
+      const customEvent = e as CustomEvent<string>;
+      if (customEvent.detail === "changesure" || customEvent.detail === "veribatch") {
+        setActiveTab(customEvent.detail);
+      }
+    };
+
+    window.addEventListener("hashchange", syncTabFromUrl);
+    window.addEventListener("popstate", syncTabFromUrl);
+    window.addEventListener("product-tab-change", handleCustomTabChange);
+    return () => {
+      window.removeEventListener("hashchange", syncTabFromUrl);
+      window.removeEventListener("popstate", syncTabFromUrl);
+      window.removeEventListener("product-tab-change", handleCustomTabChange);
+    };
   }, [searchParams]);
 
   const handleTabChange = (tab: "veribatch" | "changesure") => {
     setActiveTab(tab);
     // Update hash in address bar cleanly without full page jump
-    window.history.replaceState(null, "", `/product?tab=${tab}#${tab}`);
+    if (typeof window !== "undefined") {
+      window.history.replaceState(null, "", `/product?tab=${tab}#${tab}`);
+    }
   };
 
   return (
-    <div className="w-full">
+    <div className="w-full pt-[76px]">
       {/* Product Selection Tabs Navigation Header */}
-      <div className="sticky top-[76px] z-40 bg-white/90 backdrop-blur-md border-b border-purple-100 shadow-sm py-4">
+      <div id="product-selection-tabs" className="sticky top-[76px] z-40 bg-white/90 backdrop-blur-md border-b border-purple-100 shadow-sm py-4">
         <div className="container-xl">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
             <div className="text-xs font-bold uppercase tracking-wider text-slate-500">
@@ -212,6 +233,8 @@ export default function ProductTabs() {
             {/* Tab Buttons Pill */}
             <div className="inline-flex p-1.5 rounded-2xl bg-slate-100 border border-slate-200/80 w-full sm:w-auto">
               <button
+                type="button"
+                id="tab-btn-veribatch"
                 onClick={() => handleTabChange("veribatch")}
                 className={`flex-1 sm:flex-none flex items-center justify-center gap-2.5 px-6 py-3 rounded-xl font-bold text-xs transition-all duration-200 cursor-pointer ${
                   activeTab === "veribatch"
@@ -233,6 +256,8 @@ export default function ProductTabs() {
               </button>
 
               <button
+                type="button"
+                id="tab-btn-changesure"
                 onClick={() => handleTabChange("changesure")}
                 className={`flex-1 sm:flex-none flex items-center justify-center gap-2.5 px-6 py-3 rounded-xl font-bold text-xs transition-all duration-200 cursor-pointer ${
                   activeTab === "changesure"
@@ -264,7 +289,7 @@ export default function ProductTabs() {
 
       {/* TAB 1: VERIBATCH CONTENT */}
       {activeTab === "veribatch" && (
-        <div className="animate-in fade-in duration-300">
+        <div id="veribatch" className="animate-in fade-in duration-300">
           {/* Product Banner */}
           <section
             className="py-16 md:py-20"
@@ -291,8 +316,15 @@ export default function ProductTabs() {
                     <ChevronRight size={16} />
                   </Link>
                   <button
-                    onClick={() => handleTabChange("changesure")}
-                    className="btn-secondary inline-flex items-center gap-2 text-xs"
+                    type="button"
+                    id="veribatch-hero-switch-btn"
+                    onClick={() => {
+                      handleTabChange("changesure");
+                      if (typeof window !== "undefined") {
+                        window.scrollTo({ top: 0, behavior: "smooth" });
+                      }
+                    }}
+                    className="btn-secondary inline-flex items-center gap-2 text-xs cursor-pointer"
                   >
                     View ChangeSure™ Platform <ArrowRight size={14} />
                   </button>
@@ -390,7 +422,7 @@ export default function ProductTabs() {
 
       {/* TAB 2: CHANGESURE CONTENT */}
       {activeTab === "changesure" && (
-        <div className="animate-in fade-in duration-300">
+        <div id="changesure" className="animate-in fade-in duration-300">
           {/* Product Banner */}
           <section
             className="py-16 md:py-20"
@@ -417,8 +449,15 @@ export default function ProductTabs() {
                     <ChevronRight size={16} />
                   </Link>
                   <button
-                    onClick={() => handleTabChange("veribatch")}
-                    className="btn-secondary inline-flex items-center gap-2 text-xs border-purple-200 text-purple-900 hover:bg-purple-50"
+                    type="button"
+                    id="changesure-hero-switch-btn"
+                    onClick={() => {
+                      handleTabChange("veribatch");
+                      if (typeof window !== "undefined") {
+                        window.scrollTo({ top: 0, behavior: "smooth" });
+                      }
+                    }}
+                    className="btn-secondary inline-flex items-center gap-2 text-xs border-purple-200 text-purple-900 hover:bg-purple-50 cursor-pointer"
                   >
                     View VeriBatch™ System <ArrowRight size={14} />
                   </button>

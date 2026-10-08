@@ -5,19 +5,20 @@ import {
   Play,
   Pause,
   RotateCcw,
-  CheckCircle2,
   AlertTriangle,
-  Clock,
   Check,
-  ChevronRight,
-  User,
   Bell,
   Sparkles,
   Activity,
-  FileText,
-  ShieldCheck,
-  Layers,
 } from "lucide-react";
+
+const logMessages = [
+  "14:02:14 UTC - Mixing Time: 155 min within tolerance limits",
+  "14:02:17 UTC - Temp Excursion 26°C analyzed by RCAAgent",
+  "14:02:20 UTC - Filling Volume: 49.8ml verified (Pass)",
+  "14:02:23 UTC - Labeling Check: Verified (Pass)",
+  "14:02:26 UTC - 100% Batch Reconciliation Complete → CoA Generated",
+];
 
 export default function AnimatedProductHero() {
   const [isPlaying, setIsPlaying] = useState(true);
@@ -42,6 +43,9 @@ export default function AnimatedProductHero() {
         } else {
           setProgress((p) => Math.min(100, p + 5));
           setCompletedSteps((c) => Math.min(20, c + 1));
+          if (next <= logMessages.length) {
+            setLogs((prevLogs) => [logMessages[next - 1], ...prevLogs.slice(0, 3)]);
+          }
         }
         return next;
       });
@@ -49,20 +53,6 @@ export default function AnimatedProductHero() {
 
     return () => clearInterval(interval);
   }, [isPlaying]);
-
-  // Log updater
-  useEffect(() => {
-    const logMessages = [
-      "14:02:14 UTC - Mixing Time: 155 min within tolerance limits",
-      "14:02:17 UTC - Temp Excursion 26°C analyzed by RCAAgent",
-      "14:02:20 UTC - Filling Volume: 49.8ml verified (Pass)",
-      "14:02:23 UTC - Labeling Check: Verified (Pass)",
-      "14:02:26 UTC - 100% Batch Reconciliation Complete → CoA Generated",
-    ];
-    if (scanStep > 0 && scanStep <= logMessages.length) {
-      setLogs((prev) => [logMessages[scanStep - 1], ...prev.slice(0, 3)]);
-    }
-  }, [scanStep]);
 
   const rows = [
     {

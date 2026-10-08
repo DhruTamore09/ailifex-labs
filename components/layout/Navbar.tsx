@@ -64,24 +64,31 @@ export default function Navbar() {
 
             {/* Products Dropdown */}
             <div
-              className="relative"
+              className="relative py-2 group"
               onMouseEnter={() => setDropdownOpen(true)}
               onMouseLeave={() => setDropdownOpen(false)}
             >
-              <button
-                onClick={() => setDropdownOpen(!dropdownOpen)}
+              <Link
+                href="/product"
+                id="nav-link-products"
+                onClick={() => {
+                  setDropdownOpen(false);
+                  if (typeof window !== "undefined") {
+                    window.dispatchEvent(new CustomEvent("product-tab-change", { detail: "veribatch" }));
+                  }
+                }}
                 className="px-4 py-2 text-[14px] font-medium rounded-lg transition-all duration-200 hover:bg-[#f5f0ff] text-slate-700 inline-flex items-center gap-1.5 cursor-pointer"
               >
-                Products
+                <span>Products</span>
                 <ChevronDown
                   size={14}
                   className={`transition-transform duration-200 ${dropdownOpen ? "rotate-180 text-purple-600" : "text-slate-500"}`}
                 />
-              </button>
+              </Link>
 
               {/* Dropdown Menu Box */}
               {dropdownOpen && (
-                <div className="absolute top-full left-0 w-96 p-3 bg-white rounded-2xl border border-purple-100 shadow-2xl shadow-purple-950/10 text-xs animate-in fade-in slide-in-from-top-2 duration-150">
+                <div className="absolute top-full left-0 w-96 p-3 bg-white rounded-2xl border border-purple-100 shadow-2xl shadow-purple-950/10 text-xs animate-in fade-in slide-in-from-top-2 duration-150 z-50">
                   <div className="px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider text-purple-600 border-b border-purple-50 flex items-center justify-between">
                     <span>Product Suite</span>
                     <span className="text-[9px] bg-purple-50 px-2 py-0.5 rounded-full text-purple-700 font-semibold">Life Sciences Platforms</span>
@@ -91,7 +98,13 @@ export default function Navbar() {
                     {/* VeriBatch */}
                     <Link
                       href="/product?tab=veribatch#veribatch"
-                      onClick={() => setDropdownOpen(false)}
+                      id="nav-dropdown-veribatch"
+                      onClick={() => {
+                        setDropdownOpen(false);
+                        if (typeof window !== "undefined") {
+                          window.dispatchEvent(new CustomEvent("product-tab-change", { detail: "veribatch" }));
+                        }
+                      }}
                       className="p-3 rounded-xl hover:bg-purple-50/70 transition-colors border border-transparent hover:border-purple-100 flex items-start gap-3 group/item cursor-pointer"
                     >
                       <div className="w-9 h-9 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center shrink-0 shadow-sm transition-transform group-hover/item:scale-105">
@@ -116,7 +129,13 @@ export default function Navbar() {
                     {/* ChangeSure */}
                     <Link
                       href="/product?tab=changesure#changesure"
-                      onClick={() => setDropdownOpen(false)}
+                      id="nav-dropdown-changesure"
+                      onClick={() => {
+                        setDropdownOpen(false);
+                        if (typeof window !== "undefined") {
+                          window.dispatchEvent(new CustomEvent("product-tab-change", { detail: "changesure" }));
+                        }
+                      }}
                       className="p-3 rounded-xl hover:bg-sky-50/70 transition-colors border border-transparent hover:border-sky-100 flex items-start gap-3 group/item cursor-pointer"
                     >
                       <div className="w-9 h-9 rounded-xl bg-sky-100 text-sky-700 flex items-center justify-center shrink-0 shadow-sm transition-transform group-hover/item:scale-105">
@@ -143,7 +162,13 @@ export default function Navbar() {
                     <span className="text-[10px] text-slate-500">Explore complete product features</span>
                     <Link
                       href="/product"
-                      onClick={() => setDropdownOpen(false)}
+                      id="nav-dropdown-all-products"
+                      onClick={() => {
+                        setDropdownOpen(false);
+                        if (typeof window !== "undefined") {
+                          window.dispatchEvent(new CustomEvent("product-tab-change", { detail: "veribatch" }));
+                        }
+                      }}
                       className="text-[11px] font-bold text-purple-600 hover:text-purple-800 flex items-center gap-1"
                     >
                       All Details <ArrowRight size={12} />
@@ -190,11 +215,33 @@ export default function Navbar() {
             <Link href="/about" onClick={() => setIsOpen(false)} className="px-4 py-2 font-medium">About Us</Link>
             
             <div className="px-4 pt-2">
-              <div className="font-bold text-xs uppercase tracking-wider text-purple-600 mb-2">Products</div>
+              <div className="flex items-center justify-between mb-2">
+                <Link
+                  href="/product"
+                  id="mobile-nav-products-overview"
+                  onClick={() => {
+                    setIsOpen(false);
+                    if (typeof window !== "undefined") {
+                      window.dispatchEvent(new CustomEvent("product-tab-change", { detail: "veribatch" }));
+                    }
+                  }}
+                  className="font-bold text-xs uppercase tracking-wider text-purple-600 hover:text-purple-800 flex items-center gap-1 cursor-pointer"
+                >
+                  <span>Products Suite</span>
+                  <ArrowRight size={13} />
+                </Link>
+                <span className="text-[9px] bg-purple-50 px-2 py-0.5 rounded-full text-purple-700 font-semibold">Overview</span>
+              </div>
               <div className="flex flex-col gap-2">
                 <Link
                   href="/product?tab=veribatch#veribatch"
-                  onClick={() => setIsOpen(false)}
+                  id="mobile-nav-veribatch"
+                  onClick={() => {
+                    setIsOpen(false);
+                    if (typeof window !== "undefined") {
+                      window.dispatchEvent(new CustomEvent("product-tab-change", { detail: "veribatch" }));
+                    }
+                  }}
                   className="flex items-center justify-between p-3 rounded-xl bg-purple-50/70 border border-purple-100 font-semibold text-slate-900 text-xs"
                 >
                   <div className="flex items-center gap-2">
@@ -206,7 +253,13 @@ export default function Navbar() {
 
                 <Link
                   href="/product?tab=changesure#changesure"
-                  onClick={() => setIsOpen(false)}
+                  id="mobile-nav-changesure"
+                  onClick={() => {
+                    setIsOpen(false);
+                    if (typeof window !== "undefined") {
+                      window.dispatchEvent(new CustomEvent("product-tab-change", { detail: "changesure" }));
+                    }
+                  }}
                   className="flex items-center justify-between p-3 rounded-xl bg-sky-50/70 border border-sky-100 font-semibold text-slate-900 text-xs"
                 >
                   <div className="flex items-center gap-2">

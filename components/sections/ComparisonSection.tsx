@@ -94,7 +94,7 @@ export default function ComparisonSection() {
                 Ready to accelerate your batch disposition timeline?
               </div>
               <div className="text-xs text-purple-200">
-                Experience VeriBatch™ live with your organization's batch records.
+                Experience VeriBatch™ live with your organization&apos;s batch records.
               </div>
             </div>
             <Link href="/contact" className="btn-primary text-xs px-6 py-3 shrink-0">

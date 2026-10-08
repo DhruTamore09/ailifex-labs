@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import Link from "next/link";
 import { Mail, Clock, Building, User, RefreshCw, ArrowLeft, MessageSquare } from "lucide-react";
 
@@ -20,7 +20,7 @@ export default function AdminMessagesPage() {
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState("");
 
-  const fetchMessages = async () => {
+  const fetchMessages = useCallback(async () => {
     setLoading(true);
     try {
       const res = await fetch("/api/messages");
@@ -33,10 +33,31 @@ export default function AdminMessagesPage() {
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
 
   useEffect(() => {
-    fetchMessages();
+    let ignore = false;
+    async function init() {
+      try {
+        const res = await fetch("/api/messages");
+        if (res.ok) {
+          const data = await res.json();
+          if (!ignore) {
+            setMessages(data.messages ? data.messages.reverse() : []);
+          }
+        }
+      } catch (err) {
+        console.error(err);
+      } finally {
+        if (!ignore) {
+          setLoading(false);
+        }
+      }
+    }
+    init();
+    return () => {
+      ignore = true;
+    };
   }, []);
 
   const filteredMessages = messages.filter(
