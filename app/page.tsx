@@ -9,9 +9,9 @@ import LifeSciencesFocus from "@/components/sections/LifeSciencesFocus";
 import RequestDemo from "@/components/sections/RequestDemo";
 
 export const metadata: Metadata = {
-  title: "LifeScienceX AI | VeriBatch™ Life Sciences Batch Review System",
+  title: "LifeScienceX AI | VeriBatch™ Intelligent BMR Review System",
   description:
-    "Technology for smarter Life Sciences operations. LifeScienceX AI delivers VeriBatch™ — MBR/BMR comparison, batch record review, exception management, and reviewer workflows.",
+    "LifeScienceX AI delivers VeriBatch™ — extracting executed BMR data, validating against MBR, SOPs, ERP, MES, and LIMS, identifying discrepancies, and automating downstream release workflows.",
 };
 
 export default function HomePage() {

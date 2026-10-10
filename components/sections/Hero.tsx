@@ -23,7 +23,7 @@ export default function Hero() {
           <div className="flex justify-center mb-6">
             <span className="section-label">
               <span style={{width: 6, height: 6, borderRadius: "50%", background: "#6c3fc5", display: "inline-block"}}/>
-              Enterprise Life Sciences Platforms · VeriBatch™ & ChangeSure™
+              Enterprise Life Sciences Platforms · VeriBatch™ BMR Review & ChangeSure™
             </span>
           </div>
 
@@ -39,22 +39,22 @@ export default function Hero() {
 
           {/* Subheadline */}
           <p className="text-lg md:text-xl leading-relaxed mb-8 max-w-2xl mx-auto" style={{color: "#4b4565"}}>
-            Accelerate batch record review with <strong>VeriBatch™</strong> and automate enterprise change control governance with <strong>ChangeSure™</strong> — built for regulated pharmaceutical & biotech manufacturing.
+            Extract executed <strong>BMR</strong> data, validate it against the <strong>MBR</strong> across SOPs, ERP, MES, and LIMS, catch discrepancies instantly, and automate downstream release workflows with <strong>VeriBatch™</strong>.
           </p>
 
           {/* Key Feature Highlights */}
           <div className="flex flex-wrap items-center justify-center gap-3 mb-10 text-xs font-semibold" style={{color: "#6c3fc5"}}>
             <span className="px-3.5 py-1.5 rounded-full" style={{background: "#f0ebfd", border: "1px solid #e8e4f4"}}>
-              ⚡ VeriBatch™ MBR/BMR Review
+              ⭐ MBR Golden Standard Validation
             </span>
             <span className="px-3.5 py-1.5 rounded-full" style={{background: "#e0f2fe", color: "#0369a1", border: "1px solid #bae6fd"}}>
-              🔄 ChangeSure™ Change Governance
+              🔗 ERP · MES · LIMS Reconciliation
             </span>
             <span className="px-3.5 py-1.5 rounded-full" style={{background: "#f0ebfd", border: "1px solid #e8e4f4"}}>
-              🔒 Tamper-Evident Audit Trails
+              ⚡ Real-Time Discrepancy Detection
             </span>
             <span className="px-3.5 py-1.5 rounded-full" style={{background: "#e0f2fe", color: "#0369a1", border: "1px solid #bae6fd"}}>
-              🎯 Cross-Functional Risk Assessment
+              🚀 Automated Downstream Workflows
             </span>
           </div>
 

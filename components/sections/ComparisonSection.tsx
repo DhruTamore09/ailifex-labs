@@ -5,12 +5,17 @@ const comparisons = [
   {
     feature: "Review Speed & Cycle Time",
     traditional: "1 to 5 days of manual page-by-page document verification",
-    veribatch: "Under 15 minutes automated reconciliation & audit",
+    veribatch: "Under 15 minutes automated MBR reconciliation & disposition",
+  },
+  {
+    feature: "Cross-System Data Harmonization",
+    traditional: "Siloed paper records; manual swivel-chair lookups across ERP, MES & LIMS",
+    veribatch: "Unified MBR cross-check against SOPs, ERP lots, MES telemetry, and LIMS lab tests",
   },
   {
     feature: "Deviation & Out-of-Spec (OOS) Detection",
     traditional: "Manual line inspection; high risk of oversight or human error",
-    veribatch: "100% parameter-level specification verification in seconds",
+    veribatch: "100% parameter-level MBR specification verification in seconds",
   },
   {
     feature: "Root Cause & Exception Triage",
@@ -18,14 +23,14 @@ const comparisons = [
     veribatch: "Automated 6M Fishbone RCA & ICH Q9 risk scoring",
   },
   {
+    feature: "Downstream Release & Workflows",
+    traditional: "Manual ERP status entry, slow paper handoffs, delayed inventory release",
+    veribatch: "Review-by-Exception (RbE) fast-tracking with automated ERP release triggers",
+  },
+  {
     feature: "Audit Readiness & Governance",
     traditional: "Paper-heavy records; fragmented audit trails and archives",
     veribatch: "ALCOA+ compliant, immutable digital audit trail with 1-click export",
-  },
-  {
-    feature: "Decision Authority",
-    traditional: "Dependent on physical paper routing between departments",
-    veribatch: "Human-in-the-loop QA sign-off with role-based routing",
   },
 ];
 

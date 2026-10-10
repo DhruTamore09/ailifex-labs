@@ -21,86 +21,90 @@ import {
   SlidersHorizontal,
   CheckSquare,
   ArrowRight,
+  Layers,
+  Database,
+  Workflow,
+  Cpu,
 } from "lucide-react";
 
 // VeriBatch features
 const veribatchFeatures = [
   {
-    id: "mbr-bmr",
+    id: "mbr-golden",
     icon: GitCompare,
-    title: "MBR/BMR Comparison",
-    headline: "Parameter-by-Parameter Record Comparison",
+    title: "MBR Golden Target Verification",
+    headline: "Automated Extraction & Master Record Matching",
     description:
-      "The system performs a structured, parameter-level comparison between the Master Batch Record (MBR) and the executed Batch Manufacturing Record (BMR). Deviations are automatically identified and presented to reviewers in a clear, prioritized format.",
+      "Extracts execution data from paper scans, hybrid PDFs, or digital EBRs and performs 100% parameter-level verification against the Master Batch Record (MBR)—verifying Critical Process Parameters (CPPs), CQAs, and step sequence.",
     points: [
-      "Automated field-level matching",
-      "Deviation highlighting with severity classification",
-      "Historical comparison for trending analysis",
+      "AI vision & structured data extraction",
+      "Nominal, USL, LSL, NMT & NLT limit checks",
+      "Chronological process sequence audit",
+    ],
+  },
+  {
+    id: "multi-system",
+    icon: Database,
+    title: "Multi-System Cross-Validation",
+    headline: "Harmonizing SOPs, ERP, MES & LIMS Data",
+    description:
+      "Eliminates data silos across the plant. Automatically cross-validates batch execution against active SOP revisions, ERP material lots & BOM, MES machine telemetry, LIMS release testing, and predefined business rules.",
+    points: [
+      "ERP material lot & expiration verification",
+      "MES shop-floor sensor telemetry auditing",
+      "LIMS analytical CoA release synchronization",
+    ],
+  },
+  {
+    id: "discrepancies",
+    icon: AlertTriangle,
+    title: "Discrepancy & Deviation Intelligence",
+    headline: "Real-Time OOS, OOT & Anomaly Detection",
+    description:
+      "Instantly identifies parameter excursions, statistical out-of-trend drifts, missing witness signatures, and yield reconciliation gaps with automated severity classification (Critical, Major, Minor).",
+    points: [
+      "Automated OOS & OOT excursion classification",
+      "ALCOA+ signature & data integrity audit",
+      "Yield & mass balance reconciliation",
+    ],
+  },
+  {
+    id: "downstream-workflows",
+    icon: Workflow,
+    title: "Automated Downstream Workflows",
+    headline: "Review-by-Exception, SAP Release & QMS Routing",
+    description:
+      "Triggers automated downstream actions tailored to your requirements: fast-track Review-by-Exception (RbE) with automated ERP release status triggers, or automated QMS deviation and CAPA initiation.",
+    points: [
+      "Review-by-Exception (RbE) fast-tracking",
+      "Automated ERP inventory release triggers",
+      "Auto-generated QMS deviation & CAPA drafts",
     ],
   },
   {
     id: "batch-review",
     icon: FileText,
-    title: "Batch Record Review",
-    headline: "Structured, Contextual Review Workflows",
+    title: "Batch Record Review Workspace",
+    headline: "Contextual Human-in-the-Loop QA Review",
     description:
-      "Reviewers access a structured, form-based view of the complete batch record — with relevant MBR references, in-process results, and exception flags in context. Annotation, querying, and sign-off are all performed within a single interface.",
+      "Reviewers access a unified, form-based workspace of the complete batch record—with side-by-side MBR specifications, multi-system telemetry, discrepancy flags, and collaborative annotation threads.",
     points: [
-      "Complete batch record in structured view",
-      "Inline annotations and reviewer queries",
-      "Electronic review sign-off with identity capture",
-    ],
-  },
-  {
-    id: "spec-verification",
-    icon: ShieldCheck,
-    title: "Specification Verification",
-    headline: "Automated Parameter and Yield Checking",
-    description:
-      "Process parameters, in-process control results, and yield calculations are checked against specification limits defined in the MBR. Out-of-specification (OOS) and out-of-trend (OOT) conditions are flagged automatically.",
-    points: [
-      "Limit-based specification checking (NMT, NLT, range)",
-      "OOS and OOT detection",
-      "Yield reconciliation validation",
-    ],
-  },
-  {
-    id: "exceptions",
-    icon: AlertTriangle,
-    title: "Exception Detection",
-    headline: "Comprehensive Exception Identification and Management",
-    description:
-      "Exceptions identified during automated analysis and reviewer review are captured in a structured exception log — with classification, investigation status, and disposition tracked through to closure.",
-    points: [
-      "Automated exception identification from batch data",
-      "Structured exception log with classification",
-      "Investigation and disposition tracking",
+      "Side-by-side MBR vs BMR parameter view",
+      "Inline reviewer query & annotation threads",
+      "21 CFR Part 11 compliant digital sign-off",
     ],
   },
   {
     id: "dashboard",
     icon: LayoutDashboard,
-    title: "Review Dashboard",
-    headline: "Centralized Batch Review Visibility",
+    title: "Review Dashboard & Governance",
+    headline: "Real-Time Batch Disposition Visibility",
     description:
-      "The review dashboard provides managers and QA leads with a real-time view of batch review status across all active batches — including review progress, pending actions, SLA tracking, and exception trends.",
+      "Provides QA directors and Qualified Persons with real-time visibility across active batch pipelines—monitoring review cycle times, reviewer SLA countdowns, and plant-wide exception analytics.",
     points: [
-      "Real-time batch review status view",
-      "Pending actions and workload by reviewer",
-      "Exception and deviation trend reporting",
-    ],
-  },
-  {
-    id: "workflow",
-    icon: Users,
-    title: "Reviewer Workflow",
-    headline: "Human-in-the-Loop QA Review and Approval",
-    description:
-      "Review workflows ensure qualified human QA professionals maintain full oversight at every step. Automated findings act strictly as advisory inputs, leaving final batch disposition and legal sign-off in authorized hands.",
-    points: [
-      "Human-in-the-loop decision governance",
-      "Multi-stage, role-based review routing",
-      "Second reviewer and QA escalation paths",
+      "Real-time batch disposition pipeline",
+      "Reviewer workload & SLA performance tracking",
+      "ICH Q9 batch risk scoring & audit logs",
     ],
   },
 ];
@@ -251,7 +255,7 @@ export default function ProductTabs() {
                       : "bg-purple-100 text-purple-700"
                   }`}
                 >
-                  Batch Review
+                  BMR Review
                 </span>
               </button>
 
@@ -299,16 +303,16 @@ export default function ProductTabs() {
               <div className="max-w-3xl mb-12">
                 <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-purple-100 text-purple-700 text-xs font-bold mb-4">
                   <FileCheck size={15} />
-                  Flagship Platform · Life Sciences Batch Review
+                  Flagship Platform · BMR Review System
                 </span>
                 <h1
                   className="text-4xl md:text-6xl font-bold mb-6 text-slate-900 leading-tight"
                   style={{ fontFamily: "var(--font-jakarta)", letterSpacing: "-0.03em" }}
                 >
-                  VeriBatch™ <span className="gradient-text">Batch Review System</span>
+                  VeriBatch™ <span className="gradient-text">BMR Review System</span>
                 </h1>
                 <p className="text-lg text-slate-600 leading-relaxed mb-8">
-                  Accelerates batch record review and release from days to minutes — integrating MBR vs BMR parameter comparison, specification checking, exception management, and QA disposition sign-offs into a single, audit-ready environment.
+                  Extracts executed Batch Manufacturing Record (BMR) data and validates it against the <strong>Master Batch Record (MBR)</strong> as the primary golden standard—cross-checked with SOPs, ERP, MES, LIMS, and predefined business rules—to identify discrepancies instantly and automate downstream release workflows.
                 </p>
                 <div className="flex flex-wrap items-center gap-4">
                   <Link href="/contact" className="btn-primary">
@@ -341,7 +345,7 @@ export default function ProductTabs() {
                       <div className="w-3 h-3 rounded-full bg-green-400" />
                     </div>
                     <span className="font-mono text-[11px] text-slate-300 ml-2">
-                      LifeScienceX AI VeriBatch™ MBR/BMR Comparison Engine · Lot BT-2024-1185
+                      LifeScienceX AI VeriBatch™ MBR/BMR Multi-System Engine · Lot BT-2024-1185
                     </span>
                   </div>
                   <span className="bg-purple-500/20 text-purple-300 px-2.5 py-0.5 rounded-full text-[10px] font-bold border border-purple-400/30">
@@ -365,7 +369,7 @@ export default function ProductTabs() {
                 </div>
                 <div className="p-5 rounded-2xl bg-white border border-purple-100 shadow-sm text-center">
                   <div className="text-2xl md:text-3xl font-extrabold text-purple-700 font-jakarta">100%</div>
-                  <div className="text-xs text-slate-600 font-medium mt-1">Parameter-Level Check</div>
+                  <div className="text-xs text-slate-600 font-medium mt-1">MBR Parameter Check</div>
                 </div>
                 <div className="p-5 rounded-2xl bg-white border border-purple-100 shadow-sm text-center">
                   <div className="text-2xl md:text-3xl font-extrabold text-purple-700 font-jakarta">ALCOA+</div>
@@ -373,7 +377,88 @@ export default function ProductTabs() {
                 </div>
                 <div className="p-5 rounded-2xl bg-white border border-purple-100 shadow-sm text-center">
                   <div className="text-2xl md:text-3xl font-extrabold text-purple-700 font-jakarta">0 Misses</div>
-                  <div className="text-xs text-slate-600 font-medium mt-1">Automated OOS Triage</div>
+                  <div className="text-xs text-slate-600 font-medium mt-1">Automated Discrepancy Triage</div>
+                </div>
+              </div>
+
+              {/* Multi-System Architecture Banner */}
+              <div className="mt-12 p-8 md:p-10 rounded-3xl bg-gradient-to-br from-slate-900 via-[#181135] to-[#28145a] text-white border border-purple-500/20 shadow-xl">
+                <div className="max-w-3xl mb-8">
+                  <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/20 text-purple-300 text-xs font-bold border border-purple-400/30 mb-3">
+                    <Sparkles size={14} /> Multi-System Validation Suite
+                  </span>
+                  <h3 className="text-2xl md:text-3xl font-bold font-jakarta text-white mb-2">
+                    MBR as the Golden Baseline · Connected Plant Intelligence
+                  </h3>
+                  <p className="text-sm text-slate-300 leading-relaxed">
+                    VeriBatch extracts batch-record data, reconciles it against the Master Batch Record (MBR), and validates every parameter across your enterprise systems and custom business rules.
+                  </p>
+                </div>
+
+                {/* 6 Connected Systems Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                  <div className="p-4 rounded-xl bg-purple-950/60 border border-purple-400/40">
+                    <div className="flex items-center gap-2 text-purple-300 text-xs font-bold mb-1.5">
+                      <span className="w-2 h-2 rounded-full bg-purple-400"></span>
+                      ⭐ Master Batch Record (MBR)
+                    </div>
+                    <div className="text-xs text-slate-200">The Primary Golden Target: CPPs, CQAs, recipe sequences, and specification limits.</div>
+                  </div>
+
+                  <div className="p-4 rounded-xl bg-slate-800/60 border border-slate-700">
+                    <div className="flex items-center gap-2 text-sky-300 text-xs font-bold mb-1.5">
+                      <span className="w-2 h-2 rounded-full bg-sky-400"></span>
+                      SOPs & Execution Guidelines
+                    </div>
+                    <div className="text-xs text-slate-200">Procedural compliance, environmental sampling frequencies, and current active SOP versions.</div>
+                  </div>
+
+                  <div className="p-4 rounded-xl bg-slate-800/60 border border-slate-700">
+                    <div className="flex items-center gap-2 text-emerald-300 text-xs font-bold mb-1.5">
+                      <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
+                      ERP (SAP / Oracle)
+                    </div>
+                    <div className="text-xs text-slate-200">Raw material lots, expiration dates, BOM quantities, and inventory reconciliation.</div>
+                  </div>
+
+                  <div className="p-4 rounded-xl bg-slate-800/60 border border-slate-700">
+                    <div className="flex items-center gap-2 text-amber-300 text-xs font-bold mb-1.5">
+                      <span className="w-2 h-2 rounded-full bg-amber-400"></span>
+                      MES & Plant Telemetry
+                    </div>
+                    <div className="text-xs text-slate-200">In-process machine sensor data, equipment calibration status, and ALCOA+ timestamps.</div>
+                  </div>
+
+                  <div className="p-4 rounded-xl bg-slate-800/60 border border-slate-700">
+                    <div className="flex items-center gap-2 text-cyan-300 text-xs font-bold mb-1.5">
+                      <span className="w-2 h-2 rounded-full bg-cyan-400"></span>
+                      LIMS (Lab Information)
+                    </div>
+                    <div className="text-xs text-slate-200">Finished product release tests, Certificates of Analysis (CoA), assay potency, and sterility.</div>
+                  </div>
+
+                  <div className="p-4 rounded-xl bg-slate-800/60 border border-slate-700">
+                    <div className="flex items-center gap-2 text-violet-300 text-xs font-bold mb-1.5">
+                      <span className="w-2 h-2 rounded-full bg-violet-400"></span>
+                      Predefined Business Rules
+                    </div>
+                    <div className="text-xs text-slate-200">Site-specific exception tolerances, CDMO client release gates, and disposition logic.</div>
+                  </div>
+                </div>
+
+                {/* Automated Downstream Bar */}
+                <div className="p-5 rounded-2xl bg-white/5 border border-purple-400/20 flex flex-col md:flex-row items-center justify-between gap-4">
+                  <div>
+                    <div className="text-xs font-bold uppercase tracking-wider text-purple-300 mb-1">
+                      Automated Downstream Actions
+                    </div>
+                    <div className="text-xs text-slate-300">
+                      Fast-track Review-by-Exception (RbE) directly to ERP batch release, or auto-route flagged discrepancies into TrackWise / Veeva QMS with pre-drafted 6M root cause analysis.
+                    </div>
+                  </div>
+                  <Link href="/contact" className="btn-primary text-xs shrink-0 py-2.5 px-5 bg-purple-500 hover:bg-purple-600 border-none">
+                    Schedule Validation Demo
+                  </Link>
                 </div>
               </div>
             </div>

@@ -118,10 +118,10 @@ export default function Navbar() {
                           </span>
                         </div>
                         <div className="text-[11px] text-slate-500 font-medium">
-                          Life Sciences Batch Review System
+                          Intelligent BMR Review System
                         </div>
                         <div className="text-[10px] text-slate-400 mt-0.5 line-clamp-1">
-                          MBR/BMR comparison, 100% parameter checking & QA sign-off.
+                          BMR review against MBR, 100% parameter checking & QA sign-off.
                         </div>
                       </div>
                     </Link>
@@ -246,7 +246,7 @@ export default function Navbar() {
                 >
                   <div className="flex items-center gap-2">
                     <FileCheck size={16} className="text-purple-600" />
-                    <span>VeriBatch™ — <span className="font-normal text-slate-600">Batch Review System</span></span>
+                    <span>VeriBatch™ — <span className="font-normal text-slate-600">BMR Review System</span></span>
                   </div>
                   <ChevronRight size={14} className="text-purple-600" />
                 </Link>

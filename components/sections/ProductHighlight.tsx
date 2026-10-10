@@ -102,7 +102,7 @@ export default function ProductHighlight() {
                 {/* Footer Action */}
                 <div className="pt-6 border-t border-slate-100 flex items-center justify-between">
                   <span className="text-xs text-slate-500 font-medium">
-                    {isVeribatch ? "Automated MBR/BMR Review" : "Cross-Functional Governance"}
+                    {isVeribatch ? "Intelligent BMR Review" : "Cross-Functional Governance"}
                   </span>
                   <Link
                     href={product.href}

@@ -6,7 +6,7 @@ import RequestDemo from "@/components/sections/RequestDemo";
 export const metadata: Metadata = {
   title: "Product Suite — VeriBatch™ & ChangeSure™ | LifeScienceX AI",
   description:
-    "Explore LifeScienceX AI enterprise platforms: VeriBatch™ Life Sciences Batch Review System and ChangeSure™ Enterprise Change Control & Quality Governance Platform.",
+    "Explore LifeScienceX AI enterprise platforms: VeriBatch™ BMR Review System and ChangeSure™ Enterprise Change Control & Quality Governance Platform.",
 };
 
 export default function ProductPage() {
