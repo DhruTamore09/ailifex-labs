@@ -19,12 +19,15 @@ const plusJakarta = Plus_Jakarta_Sans({
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.lifesciencexai.com"),
   title: {
-    default: "LifeScienceX AI | VeriBatch™ Life Sciences Batch Review System",
+    default: "LifeScienceX AI | AI Solutions for Life Sciences & Pharma",
     template: "%s | LifeScienceX AI",
   },
   description:
-    "LifeScienceX AI delivers enterprise software for Life Sciences operations. Our flagship product, VeriBatch™, streamlines pharmaceutical batch record review, MBR/BMR comparison, and exception management.",
+    "LifeScienceX AI builds purpose-built AI solutions that help pharmaceutical and life sciences companies improve quality, cut compliance costs, automate batch record review, and deliver safe, affordable medicines worldwide.",
   keywords: [
+    "AI Solutions for Life Sciences",
+    "Pharma AI solutions",
+    "Life Sciences AI",
     "VeriBatch",
     "VeriBatch software",
     "life sciences software",
@@ -45,9 +48,9 @@ export const metadata: Metadata = {
     shortcut: "/favicon.ico",
   },
   openGraph: {
-    title: "LifeScienceX AI | VeriBatch™ Batch Review System",
+    title: "LifeScienceX AI | AI Solutions for Life Sciences & Pharma",
     description:
-      "Enterprise software for smarter Life Sciences operations — VeriBatch™ Batch Review System, MBR/BMR Comparison, Exception Management.",
+      "LifeScienceX AI builds purpose-built AI solutions that help pharmaceutical and life sciences companies improve quality, cut compliance costs, automate batch record review, and deliver safe, affordable medicines worldwide.",
     url: "https://www.lifesciencexai.com",
     siteName: "LifeScienceX AI",
     type: "website",
@@ -62,26 +65,62 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "LifeScienceX AI | VeriBatch™ Batch Review System",
+    title: "LifeScienceX AI | AI Solutions for Life Sciences & Pharma",
     description:
-      "Enterprise software for smarter Life Sciences operations — VeriBatch™ Batch Review System, MBR/BMR Comparison, Exception Management.",
+      "LifeScienceX AI builds purpose-built AI solutions that help pharmaceutical and life sciences companies improve quality, cut compliance costs, automate batch record review, and deliver safe, affordable medicines worldwide.",
     images: ["/images/logo.png"],
   },
 };
 
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  name: "LifeScienceX AI",
-  url: "https://www.lifesciencexai.com",
-  logo: "https://www.lifesciencexai.com/images/logo.png",
-  contactPoint: {
-    "@type": "ContactPoint",
-    telephone: "+91-8788064895",
-    contactType: "Customer Service",
-    email: "lifesciencexai@gmail.com",
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "LifeScienceX AI",
+    url: "https://www.lifesciencexai.com",
+    description: "AI Solutions for Life Sciences & Pharmaceutical Industry",
   },
-};
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "LifeScienceX AI",
+    url: "https://www.lifesciencexai.com",
+    logo: "https://www.lifesciencexai.com/images/logo.png",
+    contactPoint: {
+      "@type": "ContactPoint",
+      telephone: "+91-8788064895",
+      contactType: "Customer Service",
+      email: "lifesciencexai@gmail.com",
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    itemListElement: [
+      {
+        "@type": "SiteNavigationElement",
+        position: 1,
+        name: "Products — VeriBatch™ & ChangeSure™",
+        url: "https://www.lifesciencexai.com/product",
+        description: "AI-driven batch record review and change control platforms purpose-built for pharmaceutical manufacturing.",
+      },
+      {
+        "@type": "SiteNavigationElement",
+        position: 2,
+        name: "About Us",
+        url: "https://www.lifesciencexai.com/about",
+        description: "LifeScienceX AI is a specialized Artificial Intelligence company building enterprise software for Life Sciences operations.",
+      },
+      {
+        "@type": "SiteNavigationElement",
+        position: 3,
+        name: "Contact Us",
+        url: "https://www.lifesciencexai.com/contact",
+        description: "Our purpose-built AI solutions empower pharmaceutical companies. Request a demo or connect with our team.",
+      },
+    ],
+  },
+];
 
 export default function RootLayout({
   children,

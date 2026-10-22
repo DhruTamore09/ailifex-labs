@@ -3,9 +3,9 @@ import { Heart, Target, Lightbulb, Shield } from "lucide-react";
 import RequestDemo from "@/components/sections/RequestDemo";
 
 export const metadata: Metadata = {
-  title: "About",
+  title: "About Us",
   description:
-    "LifeScienceX AI is a Life Sciences technology company building enterprise software for pharmaceutical batch record review and quality operations.",
+    "LifeScienceX AI is a specialized Artificial Intelligence company building enterprise software for pharmaceutical batch record review and GxP quality operations.",
 };
 
 const values = [

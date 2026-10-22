@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import ContactClient from "./ContactClient";
 
 export const metadata: Metadata = {
-  title: "Contact",
+  title: "Contact Us",
   description:
-    "Get in touch with LifeScienceX AI. Request a demo of VeriBatch™ (Life Sciences Batch Review System) or ask us about pharmaceutical batch review software for your organization.",
+    "Our purpose-built AI solutions empower pharmaceutical and life sciences companies. Connect with our team or schedule a live demo of VeriBatch™.",
 };
 
 export default function ContactPage() {
