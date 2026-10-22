@@ -110,9 +110,16 @@ export default function ContactClient() {
                   <div>
                     <div className="text-xs font-semibold uppercase tracking-widest mb-1" style={{color: "#8b879e"}}>Phone / WhatsApp</div>
                     <a
-                      href="tel:+918668806982"
+                      href="tel:+918788064895"
                       className="text-sm font-semibold hover:underline transition-colors block"
                       style={{color: "#6c3fc5"}}
+                    >
+                      +91 8788064895
+                    </a>
+                    <a
+                      href="tel:+918668806982"
+                      className="text-sm font-semibold hover:underline transition-colors block mt-0.5"
+                      style={{color: "#8b879e"}}
                     >
                       +91 8668806982
                     </a>
