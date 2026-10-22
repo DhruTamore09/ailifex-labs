@@ -13,7 +13,7 @@ const footerLinks = {
   Contact: [
     { label: "+91 8788064895", href: "tel:+918788064895" },
     { label: "+91 8668806982", href: "tel:+918668806982" },
-    { label: "info.ailifexlabs@gmail.com", href: "https://mail.google.com/mail/?view=cm&fs=1&to=info.ailifexlabs@gmail.com" },
+    { label: "lifesciencexai@gmail.com", href: "https://mail.google.com/mail/?view=cm&fs=1&to=lifesciencexai@gmail.com" },
     { label: "Request a Demo", href: "/contact" },
     { label: "Get in Touch", href: "/contact#form" },
   ],

@@ -62,7 +62,7 @@ export async function POST(req: Request) {
     fs.writeFileSync(filePath, JSON.stringify(messages, null, 2));
 
     // 2. OPEN-SOURCE SMTP EMAIL DISPATCH (Nodemailer)
-    const targetEmail = process.env.NOTIFICATION_EMAIL || "info.ailifexlabs@gmail.com";
+    const targetEmail = process.env.NOTIFICATION_EMAIL || "lifesciencexai@gmail.com";
     const smtpUser = process.env.SMTP_USER;
     const smtpPass = process.env.SMTP_PASS;
     const smtpHost = process.env.SMTP_HOST || "smtp.gmail.com";

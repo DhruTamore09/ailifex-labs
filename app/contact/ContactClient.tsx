@@ -36,7 +36,7 @@ export default function ContactClient() {
         body: JSON.stringify(form),
       });
 
-      // 2. Direct browser dispatch to info.ailifexlabs@gmail.com
+      // 2. Direct browser dispatch to lifesciencexai@gmail.com
       const formData = new FormData();
       formData.append("Name", `${form.firstName} ${form.lastName}`);
       formData.append("Work Email", form.email);
@@ -47,7 +47,7 @@ export default function ContactClient() {
       formData.append("_captcha", "false");
       formData.append("_template", "table");
 
-      await fetch("https://formsubmit.co/ajax/info.ailifexlabs@gmail.com", {
+      await fetch("https://formsubmit.co/ajax/lifesciencexai@gmail.com", {
         method: "POST",
         body: formData,
       });
@@ -132,13 +132,13 @@ export default function ContactClient() {
                   <div>
                     <div className="text-xs font-semibold uppercase tracking-widest mb-1" style={{color: "#8b879e"}}>Email</div>
                     <a
-                      href="https://mail.google.com/mail/?view=cm&fs=1&to=info.ailifexlabs@gmail.com"
+                      href="https://mail.google.com/mail/?view=cm&fs=1&to=lifesciencexai@gmail.com"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-sm font-semibold hover:underline transition-colors block"
                       style={{color: "#6c3fc5"}}
                     >
-                      info.ailifexlabs@gmail.com
+                      lifesciencexai@gmail.com
                     </a>
                   </div>
                 </div>
