@@ -9,7 +9,7 @@ import LifeSciencesFocus from "@/components/sections/LifeSciencesFocus";
 import RequestDemo from "@/components/sections/RequestDemo";
 
 export const metadata: Metadata = {
-  title: "LifeScienceX AI | AI Solutions for Life Sciences & Pharma",
+  title: "LifeScienceX AI | AI Solutions for Life Sciences and Pharma Industry",
   description:
     "LifeScienceX AI builds purpose-built AI solutions that help pharmaceutical and life sciences companies improve quality, cut compliance costs, automate batch record review, and deliver safe, affordable medicines worldwide.",
 };

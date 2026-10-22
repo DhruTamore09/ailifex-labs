@@ -19,7 +19,7 @@ const plusJakarta = Plus_Jakarta_Sans({
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.lifesciencexai.com"),
   title: {
-    default: "LifeScienceX AI | AI Solutions for Life Sciences & Pharma",
+    default: "LifeScienceX AI | AI Solutions for Life Sciences and Pharma Industry",
     template: "%s | LifeScienceX AI",
   },
   description:
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     shortcut: "/favicon.ico",
   },
   openGraph: {
-    title: "LifeScienceX AI | AI Solutions for Life Sciences & Pharma",
+    title: "LifeScienceX AI | AI Solutions for Life Sciences and Pharma Industry",
     description:
       "LifeScienceX AI builds purpose-built AI solutions that help pharmaceutical and life sciences companies improve quality, cut compliance costs, automate batch record review, and deliver safe, affordable medicines worldwide.",
     url: "https://www.lifesciencexai.com",
@@ -65,7 +65,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "LifeScienceX AI | AI Solutions for Life Sciences & Pharma",
+    title: "LifeScienceX AI | AI Solutions for Life Sciences and Pharma Industry",
     description:
       "LifeScienceX AI builds purpose-built AI solutions that help pharmaceutical and life sciences companies improve quality, cut compliance costs, automate batch record review, and deliver safe, affordable medicines worldwide.",
     images: ["/images/logo.png"],
