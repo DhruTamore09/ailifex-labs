@@ -173,30 +173,32 @@ export default function ContactClient() {
                   style={{borderColor: "#e8e4f4", background: "#fafafe", minHeight: 400}}
                 >
                   <div className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto" style={{background: "#f0ebfd"}}>
-                    <CheckCircle2 size={30} style={{color: "#6c3fc5"}} />
+                    <CheckCircle2 size={32} style={{color: "#6c3fc5"}} />
                   </div>
-                  <h3 className="text-xl font-bold" style={{fontFamily: "var(--font-jakarta)", color: "#0f0a1e"}}>
-                    Message Received & Logged to Inbox
+                  <h3 className="text-2xl font-bold" style={{fontFamily: "var(--font-jakarta)", color: "#0f0a1e"}}>
+                    Thank You for Reaching Out
                   </h3>
-                  <p className="text-sm max-w-md mx-auto" style={{color: "#6b6880"}}>
-                    Thank you! Your inquiry has been saved to the live LifeScienceX AI inbox for <strong>info.ailifexlabs@gmail.com</strong>.
+                  <p className="text-sm max-w-md mx-auto leading-relaxed" style={{color: "#6b6880"}}>
+                    Your message has been received by our enterprise solutions team. A Life Sciences specialist will review your inquiry and follow up within 24 business hours.
                   </p>
 
-                  <div className="flex flex-col sm:flex-row gap-3 pt-2">
+                  <div className="flex flex-col sm:flex-row gap-3 pt-4">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setStatus("idle");
+                        setForm({ firstName: "", lastName: "", email: "", company: "", role: "", message: "" });
+                      }}
+                      className="btn-primary text-xs px-6 py-2.5"
+                    >
+                      Send Another Inquiry
+                    </button>
                     <Link
-                      href="/admin/messages"
-                      className="btn-primary text-xs px-5 py-2.5 inline-flex items-center gap-2"
+                      href="/"
+                      className="btn-secondary text-xs px-6 py-2.5"
                     >
-                      View Received Messages Inbox →
+                      Return to Homepage
                     </Link>
-                    <a
-                      href="https://mail.google.com/mail/?view=cm&fs=1&to=info.ailifexlabs@gmail.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn-secondary text-xs px-5 py-2.5 inline-flex items-center gap-2"
-                    >
-                      Open Gmail App Direct →
-                    </a>
                   </div>
                 </div>
               ) : (

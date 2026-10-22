@@ -2,7 +2,19 @@
 
 import { useEffect, useState, useCallback } from "react";
 import Link from "next/link";
-import { Mail, Clock, Building, User, RefreshCw, ArrowLeft, MessageSquare } from "lucide-react";
+import {
+  Mail,
+  Clock,
+  Building,
+  User,
+  RefreshCw,
+  ArrowLeft,
+  MessageSquare,
+  Lock,
+  ShieldAlert,
+  LogOut,
+  KeyRound,
+} from "lucide-react";
 
 interface ContactMessage {
   id: string;
@@ -17,48 +29,107 @@ interface ContactMessage {
 
 export default function AdminMessagesPage() {
   const [messages, setMessages] = useState<ContactMessage[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [filter, setFilter] = useState("");
+  const [pinInput, setPinInput] = useState("");
+  const [adminPin, setAdminPin] = useState<string | null>(null);
+  const [authError, setAuthError] = useState<string | null>(null);
+  const [isVerifying, setIsVerifying] = useState(false);
 
-  const fetchMessages = useCallback(async () => {
+  const fetchMessagesWithPin = useCallback(async (pin: string) => {
     setLoading(true);
+    setAuthError(null);
     try {
-      const res = await fetch("/api/messages");
-      if (res.ok) {
-        const data = await res.json();
-        setMessages(data.messages ? data.messages.reverse() : []);
+      const res = await fetch("/api/messages", {
+        headers: {
+          "x-admin-pin": pin,
+        },
+      });
+
+      if (res.status === 401) {
+        setAuthError("Invalid Admin PIN. Access denied.");
+        sessionStorage.removeItem("lifesciencex_admin_pin");
+        setAdminPin(null);
+        setMessages([]);
+        return false;
       }
-    } catch (err) {
-      console.error(err);
+
+      if (!res.ok) {
+        throw new Error("Failed to load messages");
+      }
+
+      const data = await res.json();
+      setMessages(data.messages ? [...data.messages].reverse() : []);
+      return true;
+    } catch {
+      setAuthError("Network or server error. Please try again.");
+      return false;
     } finally {
       setLoading(false);
     }
   }, []);
 
+  // Initial authentication & data load from sessionStorage
   useEffect(() => {
-    let ignore = false;
-    async function init() {
+    const savedPin = typeof window !== "undefined" ? sessionStorage.getItem("lifesciencex_admin_pin") : null;
+    if (!savedPin) return;
+
+    let isMounted = true;
+    (async () => {
+      setLoading(true);
       try {
-        const res = await fetch("/api/messages");
+        const res = await fetch("/api/messages", {
+          headers: { "x-admin-pin": savedPin },
+        });
+
+        if (!isMounted) return;
+
         if (res.ok) {
           const data = await res.json();
-          if (!ignore) {
-            setMessages(data.messages ? data.messages.reverse() : []);
-          }
+          setAdminPin(savedPin);
+          setMessages(data.messages ? [...data.messages].reverse() : []);
+        } else if (res.status === 401) {
+          sessionStorage.removeItem("lifesciencex_admin_pin");
         }
-      } catch (err) {
-        console.error(err);
+      } catch {
+        // Silently catch initial load network errors
       } finally {
-        if (!ignore) {
+        if (isMounted) {
           setLoading(false);
         }
       }
-    }
-    init();
+    })();
+
     return () => {
-      ignore = true;
+      isMounted = false;
     };
   }, []);
+
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!pinInput.trim()) {
+      setAuthError("Please enter your admin PIN");
+      return;
+    }
+
+    setIsVerifying(true);
+    const success = await fetchMessagesWithPin(pinInput.trim());
+    setIsVerifying(false);
+
+    if (success) {
+      sessionStorage.setItem("lifesciencex_admin_pin", pinInput.trim());
+      setAdminPin(pinInput.trim());
+      setPinInput("");
+    }
+  };
+
+  const handleLogout = () => {
+    sessionStorage.removeItem("lifesciencex_admin_pin");
+    setAdminPin(null);
+    setMessages([]);
+    setPinInput("");
+    setAuthError(null);
+  };
 
   const filteredMessages = messages.filter(
     (m) =>
@@ -69,6 +140,70 @@ export default function AdminMessagesPage() {
       m.message.toLowerCase().includes(filter.toLowerCase())
   );
 
+  // --- LOCKED SCREEN (If not authenticated) ---
+  if (!adminPin) {
+    return (
+      <div className="min-h-screen pt-36 pb-24 bg-gradient-to-b from-slate-50 via-purple-50/20 to-white flex items-center justify-center px-4 font-sans">
+        <div className="max-w-md w-full bg-white rounded-3xl p-8 border border-slate-200 shadow-xl shadow-purple-500/5 text-center">
+          <div className="w-16 h-16 rounded-2xl bg-purple-100 text-purple-600 flex items-center justify-center mx-auto mb-6 shadow-inner">
+            <Lock size={30} />
+          </div>
+
+          <span className="text-[11px] font-bold tracking-wider uppercase px-3 py-1 rounded-full bg-purple-50 text-purple-700 border border-purple-200/60 inline-block mb-3">
+            Confidential Admin Area
+          </span>
+
+          <h1 className="text-2xl font-bold text-slate-900 font-jakarta mb-2">
+            Restricted Admin Access
+          </h1>
+          <p className="text-xs text-slate-500 leading-relaxed mb-6">
+            Customer inquiries are strictly private. Please enter your administrator PIN to unlock the inquiry inbox.
+          </p>
+
+          <form onSubmit={handleLogin} className="space-y-4">
+            <div className="relative">
+              <input
+                type="password"
+                placeholder="Enter Admin PIN (Default: admin2026)"
+                value={pinInput}
+                onChange={(e) => setPinInput(e.target.value)}
+                autoFocus
+                className="w-full px-4 py-3 text-sm text-center tracking-widest rounded-xl border border-slate-200 shadow-sm outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-100 transition-all bg-slate-50/50"
+              />
+            </div>
+
+            {authError && (
+              <div className="flex items-center justify-center gap-2 text-xs text-rose-600 bg-rose-50 border border-rose-200/60 p-2.5 rounded-xl font-medium">
+                <ShieldAlert size={14} className="shrink-0" />
+                <span>{authError}</span>
+              </div>
+            )}
+
+            <button
+              type="submit"
+              disabled={isVerifying}
+              className="w-full btn-primary py-3 rounded-xl text-xs font-bold flex items-center justify-center gap-2 cursor-pointer shadow-md shadow-purple-500/20 hover:shadow-lg transition-all"
+            >
+              <KeyRound size={14} />
+              {isVerifying ? "Verifying..." : "Unlock Messages Inbox"}
+            </button>
+          </form>
+
+          <div className="mt-8 pt-6 border-t border-slate-100 flex items-center justify-between text-xs text-slate-400">
+            <Link
+              href="/"
+              className="hover:text-purple-600 transition-colors inline-flex items-center gap-1"
+            >
+              <ArrowLeft size={12} /> Back to Homepage
+            </Link>
+            <span>LifeScienceX Secure Portal</span>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // --- UNLOCKED ADMIN DASHBOARD ---
   return (
     <div className="min-h-screen pt-32 pb-20 bg-slate-50 text-slate-800 font-sans">
       <div className="container-xl">
@@ -83,25 +218,35 @@ export default function AdminMessagesPage() {
             </Link>
             <h1 className="text-3xl font-bold text-slate-900 font-jakarta flex items-center gap-3">
               <MessageSquare className="text-purple-600" size={28} />
-              Received Messages Inbox
+              Received Inquiries Inbox
             </h1>
             <p className="text-sm text-slate-500 mt-1">
-              All website inquiries received for <strong>LifeScienceX AI Inbox</strong>
+              Private portal for <strong>LifeScienceX AI</strong> lead inquiries
             </p>
           </div>
 
           <div className="flex items-center gap-3">
             <button
-              onClick={fetchMessages}
+              onClick={() => fetchMessagesWithPin(adminPin)}
               disabled={loading}
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white border border-slate-200 text-slate-700 text-xs font-bold hover:bg-slate-100 transition-colors shadow-sm"
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white border border-slate-200 text-slate-700 text-xs font-bold hover:bg-slate-100 transition-colors shadow-sm cursor-pointer"
             >
               <RefreshCw size={14} className={loading ? "animate-spin text-purple-600" : ""} />
-              Refresh Inbox
+              Refresh
             </button>
+
             <div className="px-4 py-2.5 rounded-xl bg-purple-100 border border-purple-200 text-purple-800 text-xs font-bold">
-              Total Messages: {messages.length}
+              Total: {messages.length}
             </div>
+
+            <button
+              onClick={handleLogout}
+              className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-rose-50 border border-rose-200 text-rose-700 text-xs font-bold hover:bg-rose-100 transition-colors cursor-pointer"
+              title="Lock inbox and clear credentials"
+            >
+              <LogOut size={14} />
+              Lock Inbox
+            </button>
           </div>
         </div>
 
@@ -126,7 +271,7 @@ export default function AdminMessagesPage() {
             <Mail className="mx-auto text-purple-300 mb-3" size={40} />
             <h3 className="text-lg font-bold text-slate-700">No Messages Found</h3>
             <p className="text-xs text-slate-400 mt-1 max-w-sm mx-auto">
-              When visitors submit the contact form on your website, their inquiries will instantly appear here.
+              When visitors submit the contact form on your website, their inquiries will appear here.
             </p>
           </div>
         ) : (
@@ -139,8 +284,8 @@ export default function AdminMessagesPage() {
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 border-b border-slate-100 pb-3 mb-4">
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center font-bold text-purple-700 text-sm">
-                      {msg.firstName[0]}
-                      {msg.lastName[0]}
+                      {msg.firstName?.[0] || "U"}
+                      {msg.lastName?.[0] || ""}
                     </div>
                     <div>
                       <h3 className="font-bold text-slate-900 text-base">
