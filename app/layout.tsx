@@ -17,6 +17,7 @@ const plusJakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.lifesciencexai.com"),
   title: {
     default: "LifeScienceX AI | VeriBatch™ Life Sciences Batch Review System",
     template: "%s | LifeScienceX AI",
@@ -33,19 +34,52 @@ export const metadata: Metadata = {
     "pharma technology",
     "LifeScienceX AI",
   ],
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "48x48", type: "image/x-icon" },
+      { url: "/icon.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: [
+      { url: "/apple-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+    shortcut: "/favicon.ico",
+  },
   openGraph: {
     title: "LifeScienceX AI | VeriBatch™ Batch Review System",
     description:
       "Enterprise software for smarter Life Sciences operations — VeriBatch™ Batch Review System, MBR/BMR Comparison, Exception Management.",
-    url: "https://lifesciencexai.com",
+    url: "https://www.lifesciencexai.com",
     siteName: "LifeScienceX AI",
     type: "website",
+    images: [
+      {
+        url: "/images/logo.png",
+        width: 1200,
+        height: 1200,
+        alt: "LifeScienceX AI Logo",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "LifeScienceX AI | VeriBatch™ Batch Review System",
     description:
       "Enterprise software for smarter Life Sciences operations — VeriBatch™ Batch Review System, MBR/BMR Comparison, Exception Management.",
+    images: ["/images/logo.png"],
+  },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "LifeScienceX AI",
+  url: "https://www.lifesciencexai.com",
+  logo: "https://www.lifesciencexai.com/images/logo.png",
+  contactPoint: {
+    "@type": "ContactPoint",
+    telephone: "+91-8788064895",
+    contactType: "Customer Service",
+    email: "lifesciencexai@gmail.com",
   },
 };
 
@@ -54,6 +88,12 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${inter.variable} ${plusJakarta.variable}`}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body>
         <Navbar />
         <main>{children}</main>
